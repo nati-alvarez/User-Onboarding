@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import * as Yup from "yup";
+import axios from "axios";
 
 export default function Form(){
     const [formData, setFormData] = useState({
@@ -64,8 +65,17 @@ export default function Form(){
         });
     }
 
+    function submit(e){
+        e.preventDefault();
+        axios.post("https://reqres.in/api/users", formData).then(({data})=>{
+            console.log(data);
+        }).catch(error=>{
+            console.log(error);
+        })
+    }
+
     return (
-        <form>
+        <form onSubmit={submit}>
             <label>
                 Name: <input onChange={updateFormData} name="name" type="text"/>
             </label>
