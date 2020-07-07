@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .App-logo {
@@ -28,11 +29,96 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+form {
+  background: white;
+  padding: 2vh;
+  width: 40vw;
+  border-radius: 3px;
+  margin-right: 5vw;
+}
+
+form label {
+  display: block;
+  margin: 2vh 0;
+}
+
+form label input {
+  float: right;
+}
+
+form .error {
+  background: #ffe6e6;
+  color: crimson;
+  padding: 5px;
+  border: 1px solid crimson;
+  margin-top: 10px;
+}
+
+form .error p {
+  margin: 0;
+}
+
+.users {
+  width: 40vw;
+}
+
+.list {
+  box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 80vh;
+  padding-right: 3vw;
+}
+
+.list::-webkit-scrollbar {
+  width: 8px;
+}
+ 
+.list::-webkit-scrollbar-track {
+ background: transparent;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 5px;
+}
+
+.users h2 {
+  margin-top: 0;
+}
+
+.users .user {
+  background: whitesmoke;
+  width: 100%;
+  padding: 2vh;
+  margin-bottom: 5vh;
+}
+
+.user .name {
+  margin: 0;
+  font-weight: bold;
+}
+
+.user .email {
+  color: dimgrey;
+}
+
+
+@media (max-width: 700px) {
+  body {
+    height: auto;
+    padding-top: 5vh;
   }
-  to {
-    transform: rotate(360deg);
+  .App {
+    flex-direction: column;
+  }
+
+  form, .users {
+    width: 80vw;
+    margin: 0;
+  }
+
+  .users {
+    margin-top: 3vh;
   }
 }

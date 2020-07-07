@@ -80,6 +80,7 @@ export default function Form(){
     return (
         <>
             <form onSubmit={submit}>
+                <h1>Sign Up</h1>
                 <label>
                     Name: <input onChange={updateFormData} value={formData.name} name="name" type="text"/>
                 </label>
@@ -93,22 +94,25 @@ export default function Form(){
                     Do you accept the terms of service? <input onChange={updateFormData} checked={formData.terms} name="terms" type="checkbox"/>
                 </label>
                 <button disabled={buttonDisabled}>Submit</button>
-                <div className="error">
-                    {errors.name && <p>{errors.name}</p>}
-                    {errors.email && <p>{errors.email}</p>}
-                    {errors.password && <p>{errors.password}</p>}
-                    {errors.terms && <p>{errors.terms}</p>}
-                </div>
+                
+                {errors.name && <p className="error">{errors.name}</p>}
+                {errors.email && <p className="error">{errors.email}</p>}
+                {errors.password && <p className="error">{errors.password}</p>}
+                {errors.terms && <p className="error">{errors.terms}</p>}
+
             </form>
             <div className="users">
-                {users.map(user=>{
-                    return (
-                        <div className="user">
-                            <p className="name">{user.name}</p>
-                            <small className="email">{user.email}</small>
-                        </div>
-                    )
-                })}
+                <h2>Users</h2>
+                    <div className="list">
+                    {users.map(user=>{
+                        return (
+                            <div className="user">
+                                <p className="name">{user.name}</p>
+                                <small className="email">{user.email}</small>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </>
     )
