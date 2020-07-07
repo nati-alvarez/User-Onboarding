@@ -14,6 +14,8 @@ export default function Form(){
 
     const [errors, setErrors] = useState({});
 
+    const [users, setUsers] = useState([]);
+
     const formSchema = Yup.object().shape({
         name: Yup
             .string()
@@ -68,6 +70,7 @@ export default function Form(){
     function submit(e){
         e.preventDefault();
         axios.post("https://reqres.in/api/users", formData).then(({data})=>{
+            setUsers([...users, data]);
             console.log(data);
         }).catch(error=>{
             console.log(error);
@@ -75,26 +78,38 @@ export default function Form(){
     }
 
     return (
-        <form onSubmit={submit}>
-            <label>
-                Name: <input onChange={updateFormData} name="name" type="text"/>
-            </label>
-            <label>
-                Email: <input onChange={updateFormData} name="email" type="email"/>
-            </label>
-            <label>
-                Password: <input onChange={updateFormData} name="password" type="password"/>
-            </label>
-            <label>
-                Do you accept the terms of service? <input onChange={updateFormData} name="terms" type="checkbox"/>
-            </label>
-            <button disabled={buttonDisabled}>Submit</button>
-            <div className="error">
-                {errors.name && <p>{errors.name}</p>}
-                {errors.email && <p>{errors.email}</p>}
-                {errors.password && <p>{errors.password}</p>}
-                {errors.terms && <p>{errors.terms}</p>}
+        <>
+            <form onSubmit={submit}>
+                <label>
+                    Name: <input onChange={updateFormData} name="name" type="text"/>
+                </label>
+                <label>
+                    Email: <input onChange={updateFormData} name="email" type="email"/>
+                </label>
+                <label>
+                    Password: <input onChange={updateFormData} name="password" type="password"/>
+                </label>
+                <label>
+                    Do you accept the terms of service? <input onChange={updateFormData} name="terms" type="checkbox"/>
+                </label>
+                <button disabled={buttonDisabled}>Submit</button>
+                <div className="error">
+                    {errors.name && <p>{errors.name}</p>}
+                    {errors.email && <p>{errors.email}</p>}
+                    {errors.password && <p>{errors.password}</p>}
+                    {errors.terms && <p>{errors.terms}</p>}
+                </div>
+            </form>
+            <div className="users">
+                {users.map(user=>{
+                    return (
+                        <div className="user">
+                            <p className="name">{user.name}</p>
+                            <small className="email">{user.email}</small>
+                        </div>
+                    )
+                })}
             </div>
-        </form>
+        </>
     )
 }
