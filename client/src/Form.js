@@ -71,7 +71,7 @@ export default function Form(){
         e.preventDefault();
         axios.post("https://reqres.in/api/users", formData).then(({data})=>{
             setUsers([...users, data]);
-            console.log(data);
+            setFormData({name: "", email: "", password: "", terms: false});
         }).catch(error=>{
             console.log(error);
         })
@@ -81,16 +81,16 @@ export default function Form(){
         <>
             <form onSubmit={submit}>
                 <label>
-                    Name: <input onChange={updateFormData} name="name" type="text"/>
+                    Name: <input onChange={updateFormData} value={formData.name} name="name" type="text"/>
                 </label>
                 <label>
-                    Email: <input onChange={updateFormData} name="email" type="email"/>
+                    Email: <input onChange={updateFormData} value={formData.email} name="email" type="email"/>
                 </label>
                 <label>
-                    Password: <input onChange={updateFormData} name="password" type="password"/>
+                    Password: <input onChange={updateFormData} value={formData.password }name="password" type="password"/>
                 </label>
                 <label>
-                    Do you accept the terms of service? <input onChange={updateFormData} name="terms" type="checkbox"/>
+                    Do you accept the terms of service? <input onChange={updateFormData} checked={formData.terms} name="terms" type="checkbox"/>
                 </label>
                 <button disabled={buttonDisabled}>Submit</button>
                 <div className="error">
