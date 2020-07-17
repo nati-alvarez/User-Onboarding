@@ -1,0 +1,124 @@
+.App {
+  display: flex;
+  align-items: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+form {
+  background: white;
+  padding: 2vh;
+  width: 40vw;
+  border-radius: 3px;
+  margin-right: 5vw;
+}
+
+form label {
+  display: block;
+  margin: 2vh 0;
+}
+
+form label input {
+  float: right;
+}
+
+form .error {
+  background: #ffe6e6;
+  color: crimson;
+  padding: 5px;
+  border: 1px solid crimson;
+  margin-top: 10px;
+}
+
+form .error p {
+  margin: 0;
+}
+
+.users {
+  width: 40vw;
+}
+
+.list {
+  box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 80vh;
+  padding-right: 3vw;
+}
+
+.list::-webkit-scrollbar {
+  width: 8px;
+}
+ 
+.list::-webkit-scrollbar-track {
+ background: transparent;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 5px;
+}
+
+.users h2 {
+  margin-top: 0;
+}
+
+.users .user {
+  background: whitesmoke;
+  width: 100%;
+  padding: 2vh;
+  margin-bottom: 5vh;
+}
+
+.user .name {
+  margin: 0;
+  font-weight: bold;
+}
+
+.user .email {
+  color: dimgrey;
+}
+
+
+@media (max-width: 700px) {
+  body {
+    height: auto;
+    padding-top: 5vh;
+  }
+  .App {
+    flex-direction: column;
+  }
+
+  form, .users {
+    width: 80vw;
+    margin: 0;
+  }
+
+  .users {
+    margin-top: 3vh;
+  }
+}
